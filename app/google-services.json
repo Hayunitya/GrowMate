@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "130811828593",
+    "project_id": "mobdevbcteti2",
+    "storage_bucket": "mobdevbcteti2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130811828593:android:f995b417209041af24bed0",
+        "android_client_info": {
+          "package_name": "com.example.crud"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2Ef_KextzE2xFKwF1QTgwZAMD-R3Oj4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130811828593:android:ea06d9e5d70c98ee24bed0",
+        "android_client_info": {
+          "package_name": "com.example.growmate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2Ef_KextzE2xFKwF1QTgwZAMD-R3Oj4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130811828593:android:0870f4c0b7ed3ef424bed0",
+        "android_client_info": {
+          "package_name": "com.example.layoutbootcamp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2Ef_KextzE2xFKwF1QTgwZAMD-R3Oj4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
