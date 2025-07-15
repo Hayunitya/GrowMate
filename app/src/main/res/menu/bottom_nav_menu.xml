@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/icon01"
+        android:title="Home"
+        app:iconTint="@null" />
+
+    <item
+        android:id="@+id/addFragment"
+        android:icon="@drawable/icon02"
+        android:title="Tambah"
+        app:iconTint="@null" />
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/icon03"
+        android:title="Profil"
+        app:iconTint="@null" />
+
+</menu>

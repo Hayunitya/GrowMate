@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.example.growmate.databinding.FragmentAuthBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
@@ -70,7 +71,7 @@ class AuthFragment : Fragment() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
                 Toast.makeText(context, "Login berhasil", Toast.LENGTH_SHORT).show()
-//                findNavController().navigate(R.id.action_authFragment_to_homeFragment)
+                findNavController().navigate(R.id.action_authFragment_to_homeFragment)
             }
             .addOnFailureListener {
                 Toast.makeText(context, "Login gagal: ${it.message}", Toast.LENGTH_LONG).show()
