@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green">
+
+        <!-- Icon Tumbuh (Kiri) -->
+        <ImageView
+            android:id="@+id/imgGrowthStage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:scaleType="centerInside"
+            android:src="@drawable/icon03" />
+
+        <!-- Detail Tanaman (Kanan) -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginStart="16dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvPlantName"
+                android:text="Nama Tanaman"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/brown"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvPlantDate"
+                android:text="Ditanam: 17 Juli 2025"
+                android:textSize="14sp"
+                android:textColor="@color/brown"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvWaterStatus"
+                android:text="Status: Perlu disiram"
+                android:textSize="14sp"
+                android:textColor="@color/brown"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Streak Bar (Horizontal Icon) -->
+            <LinearLayout
+                android:id="@+id/llStreakBar"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <!-- Icon Streaknya akan diisi dari adapter -->
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnWaterNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sudah Menyiram"
+                android:layout_marginTop="8dp"
+                android:textSize="14sp"
+                android:backgroundTint="@color/brown"
+                android:textColor="@color/bg"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+
