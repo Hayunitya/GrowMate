@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="24dp"
+    android:background="@color/bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tambah Tanaman"
+            android:gravity="center"
+            android:textSize="60dp"
+            android:fontFamily="@font/jersey10_regular"
+            android:textColor="@color/brown"/>
+
+        <!-- Nama Tanaman -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.GrowMate.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPlantName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nama Tanaman" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Tanggal Tanam -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.GrowMate.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPlantDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tanggal Tanam"
+                android:focusable="false" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Catatan -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.GrowMate.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Catatan"
+                android:inputType="textMultiLine" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Dropdown Frekuensi Penyiraman -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.GrowMate.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="15dp"
+            android:hint="Frekuensi Penyiraman"
+            app:endIconMode="dropdown_menu">
+
+            <AutoCompleteTextView
+                android:id="@+id/spinnerWaterFreq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_dropdown_box"
+                android:popupBackground="@drawable/bg_dropdown_popup"
+                android:textColor="@color/brown"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Dropdown Frekuensi Pemupukan -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.GrowMate.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="15dp"
+            android:hint="Frekuensi Pemupukan"
+            app:endIconMode="dropdown_menu">
+
+            <AutoCompleteTextView
+                android:id="@+id/spinnerFertilizerFreq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_dropdown_box"
+                android:popupBackground="@drawable/bg_dropdown_popup"
+                android:textColor="@color/brown"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Tombol Simpan -->
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Simpan"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/brown"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+</ScrollView>
