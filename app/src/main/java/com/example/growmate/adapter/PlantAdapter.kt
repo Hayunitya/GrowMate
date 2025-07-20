@@ -41,23 +41,33 @@ class PlantAdapter(
         holder.binding.tvPlantName.text = plant.plantName
         holder.binding.tvPlantDate.text = "Ditanam: ${plant.plantDate}"
 
-        // Status Penyiraman
+        // Cek Status Penyiraman & Pemupukan
         val needsWater = plant.waterStatus == "Belum Disiram"
-        holder.binding.tvWaterStatus.text = if (needsWater) "Status: Perlu disiram" else "Status: Terpenuhi"
+        val needsFertilize = plant.fertilizerStatus == "Belum Dipupuk"
 
+        // Set Text Status Kombinasi
+        val statusText = when {
+            needsWater && needsFertilize -> "Status: Perlu disiram & perlu dipupuk"
+            needsWater -> "Status: Perlu disiram"
+            needsFertilize -> "Status: Perlu dipupuk"
+            else -> "Status: Terpenuhi"
+        }
+        holder.binding.tvWaterStatus.text = statusText
+
+        // Tombol Penyiraman
         holder.binding.btnWaterNow.apply {
             isEnabled = needsWater
             text = if (needsWater) "Siram Sekarang" else "Sudah Disiram"
             setOnClickListener { onWatered(plant) }
         }
 
-        // Status Pemupukan
-        val needsFertilize = plant.fertilizerStatus == "Belum Dipupuk"
+        // Tombol Pemupukan
         holder.binding.btnFertilizerNow.apply {
             isEnabled = needsFertilize
             text = if (needsFertilize) "Pupuk Sekarang" else "Sudah Dipupuk"
             setOnClickListener { onFertilized(plant) }
         }
+
 
         // Icon Pertumbuhan
         val iconRes = try {

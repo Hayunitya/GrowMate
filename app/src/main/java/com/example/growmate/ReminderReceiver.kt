@@ -2,6 +2,7 @@ package com.example.growmate
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -21,6 +22,8 @@ class ReminderReceiver : BroadcastReceiver() {
         val type = intent.getStringExtra("TYPE") ?: return
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
 
+        Log.d("ReminderReceiver", "Alarm Triggered ➔ Plant: $plantName | Type: $type | User: $userId")
+
         val firestore = FirebaseFirestore.getInstance()
         firestore.collection("plants")
             .whereEqualTo("userId", userId)
@@ -38,9 +41,11 @@ class ReminderReceiver : BroadcastReceiver() {
                         val lastDate = LocalDate.parse(lastWatered, formatter)
 
                         if (lastDate.isBefore(today)) {
-                            updateData["waterStreak"] = 0  // Reset streak kalau telat
+                            updateData["waterStreak"] = 0
+                            Log.d("ReminderReceiver", "Streak WATER reset for $plantName")
                         }
                         updateData["waterStatus"] = "Belum Disiram"
+                        Log.d("ReminderReceiver", "Water Status set to 'Belum Disiram' for $plantName")
                     }
 
                     if (type == "FERTILIZING") {
@@ -48,16 +53,24 @@ class ReminderReceiver : BroadcastReceiver() {
                         val lastDate = LocalDate.parse(lastFertilized, formatter)
 
                         if (lastDate.isBefore(today)) {
-                            updateData["fertilizerStreak"] = 0  // Reset streak kalau telat
+                            updateData["fertilizerStreak"] = 0
+                            Log.d("ReminderReceiver", "Streak FERTILIZER reset for $plantName")
                         }
                         updateData["fertilizerStatus"] = "Belum Dipupuk"
+                        Log.d("ReminderReceiver", "Fertilizer Status set to 'Belum Dipupuk' for $plantName")
                     }
 
                     doc.reference.update(updateData)
+                        .addOnSuccessListener {
+                            Log.d("ReminderReceiver", "Firestore updated successfully for $plantName")
+                        }
+                        .addOnFailureListener { e ->
+                            Log.e("ReminderReceiver", "Firestore update failed: ${e.message}")
+                        }
                 }
             }
             .addOnFailureListener {
-                Log.e("ReminderReceiver", "Gagal update status: ${it.message}")
+                Log.e("ReminderReceiver", "Firestore query failed: ${it.message}")
             }
 
         // Kirim Notifikasi
@@ -73,25 +86,38 @@ class ReminderReceiver : BroadcastReceiver() {
             else -> "Jangan lupa rawat $plantName!"
         }
 
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                "growmate_reminder_channel",
-                "GrowMate Reminder",
-                NotificationManager.IMPORTANCE_HIGH
-            )
-            notificationManager.createNotificationChannel(channel)
+        val openIntent = Intent(context, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            putExtra("PLANT_NAME", plantName)
+            putExtra("TYPE", type)
         }
+        val pendingIntent = PendingIntent.getActivity(
+            context,
+            (plantName + type).hashCode(),  // Unique requestCode per plant & type
+            openIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
+        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val channel = NotificationChannel(
+            "growmate_reminder_channel",
+            "GrowMate Reminder",
+            NotificationManager.IMPORTANCE_HIGH
+        )
+        notificationManager.createNotificationChannel(channel)
 
         val notification = NotificationCompat.Builder(context, "growmate_reminder_channel")
             .setSmallIcon(R.drawable.logo_growmate)
             .setContentTitle(title)
             .setContentText(content)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
             .build()
 
         notificationManager.notify((plantName + type).hashCode(), notification)
-        Log.d("ReminderReceiver", "Notifikasi & update status + streak check untuk $plantName tipe $type sukses!")
+        Log.d("ReminderReceiver", "Notification sent for $plantName - $type")
     }
 }
+
 
