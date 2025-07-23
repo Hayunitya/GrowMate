@@ -30,6 +30,7 @@
                 android:id="@+id/etPlantName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/brown"
                 android:hint="@string/plant_name" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -44,6 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/plant_date"
+                android:textColor="@color/brown"
                 android:focusable="false" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,6 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/plant_notes"
+                android:textColor="@color/brown"
                 android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,6 +72,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginStart="15dp"
             android:hint="@string/plant_watering_freq"
+            android:textColor="@color/brown"
             app:endIconMode="dropdown_menu">
 
             <AutoCompleteTextView
@@ -90,6 +94,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginStart="15dp"
             android:hint="@string/plant_fertilizing_freq"
+            android:textColor="@color/brown"
             app:endIconMode="dropdown_menu">
 
             <AutoCompleteTextView

@@ -81,7 +81,8 @@
                 android:clickable="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:hint="@string/profile_fullname" />
+                android:hint="@string/profile_fullname"
+                android:textColor="@color/brown"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -107,7 +108,8 @@
                 android:clickable="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:hint="@string/login_email" />
+                android:hint="@string/login_email"
+                android:textColor="@color/brown"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -134,6 +136,7 @@
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:hint="@string/profile_new_password_optional"
+                android:textColor="@color/brown"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,6 +147,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:text="@string/edit_button"
+            android:textColor="@android:color/white"
             android:backgroundTint="@color/brown"
             android:backgroundTintMode="@color/brown"
             tools:ignore="RtlHardcoded" />
@@ -154,6 +158,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:text="@string/save_button"
+            android:textColor="@android:color/white"
             android:backgroundTint="@color/brown"
             android:backgroundTintMode="@color/brown"
             android:visibility="gone"
@@ -178,6 +183,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginEnd="96dp"
         android:backgroundTint="@android:color/holo_red_dark"
         android:backgroundTintMode="@color/brown"
         android:text="@string/delete_account_button"

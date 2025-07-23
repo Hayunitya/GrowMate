@@ -49,6 +49,7 @@
             android:id="@+id/ivProfile"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
             android:src="@drawable/mascot"
             android:background="@drawable/circle_background"
             android:scaleType="centerCrop"
@@ -63,7 +64,7 @@
     <EditText
         android:id="@+id/etSearch"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="4dp"
