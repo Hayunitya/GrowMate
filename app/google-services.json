@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "397935783954",
+    "project_id": "growmate-aa0a5",
+    "storage_bucket": "growmate-aa0a5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:397935783954:android:f1aa43f751efb6162228cb",
+        "android_client_info": {
+          "package_name": "com.example.growmate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNreA6rZYDeIFeeiZkD9SIDs_kwkL-oFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

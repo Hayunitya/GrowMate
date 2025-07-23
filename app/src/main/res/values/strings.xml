@@ -1,0 +1,62 @@
+<resources>
+
+    <!-- App Name -->
+    <string name="app_name">GrowMate</string>
+    <string name="growmate">GrowMate</string>
+    <string name="growmate_logo">GrowMate Logo</string>
+
+    <!-- Login -->
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_button">Login</string>
+    <string name="login_register_prompt">Belum punya akun? Daftar</string>
+
+    <!-- Register -->
+    <string name="register_password_confirm">Konfirmasi Password</string>
+    <string name="register_button">Daftar</string>
+    <string name="register_login_prompt">Sudah punya akun? Login</string>
+
+    <!-- Add / Edit Plant -->
+    <string name="add_plant_title">Tambah Tanaman</string>
+    <string name="plant_name">Nama Tanaman</string>
+    <string name="plant_date">Tanggal Tanam</string>
+    <string name="plant_notes">Catatan</string>
+    <string name="plant_watering_freq">Frekuensi Penyiraman</string>
+    <string name="plant_fertilizing_freq">Frekuensi Pemupukan</string>
+    <string name="save_button">Simpan</string>
+    <string name="edit_plant_title">Edit Tanaman</string>
+    <string name="update_button">Update Data</string>
+    <string name="delete_plant_button">Hapus Tanaman</string>
+
+    <!-- Home -->
+    <string name="home_greeting">Halo, Kai!</string>
+    <string name="home_level_info">Level akan muncul di sini</string>
+    <string name="home_empty_state">Belum ada tanaman</string>
+    <string name="home_search">Cari Tanaman</string>
+
+    <!-- Profile -->
+    <string name="profile_picture">Foto Profil</string>
+    <string name="profile_username">Nama Pengguna</string>
+    <string name="profile_fullname">Nama Lengkap</string>
+    <string name="profile_new_password_optional">Password baru (opsional)</string>
+    <string name="edit_button">Edit</string>
+    <string name="logout_button">Logout</string>
+    <string name="delete_account_button">Hapus Akun</string>
+    <string name="profile_password_hidden">••••••••</string>
+
+    <!-- Plant Card -->
+    <string name="plant_icon_grow">Icon Tumbuh</string>
+    <string name="plant_date_sample">Ditanam: 17–07–2025</string>
+    <string name="plant_age_sample">Umur: 0 hari</string>
+    <string name="plant_status_water">Status: Perlu disiram</string>
+    <string name="plant_water_icon">Water Streak Icon</string>
+    <string name="plant_fertilizer_icon">Fertilizer Streak Icon</string>
+    <string name="water_now">Siram Sekarang</string>
+    <string name="fertilize_now">Pupuk Sekarang</string>
+
+    <!-- Others -->
+    <string name="number_zero">0</string>
+    <string name="play_pause_music">Play or Pause</string>
+    <string name="mute_music">Mute</string>
+
+</resources>

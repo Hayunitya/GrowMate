@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SpinnerPopupOverlay" parent="Base.Widget.AppCompat.Spinner">
+        <item name="android:popupBackground">@drawable/bg_spinner_popup</item>
+    </style>
+</resources>
