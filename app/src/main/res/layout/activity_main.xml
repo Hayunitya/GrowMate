@@ -22,11 +22,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:elevation="8dp"
         app:menu="@menu/bottom_nav_menu"
-        app:itemIconTint="@null"
+        app:itemRippleColor="@color/bg"
+        app:itemIconTint="@color/brown"
+        app:itemTextColor="@color/brown"
+        app:itemTextAppearanceActiveBoldEnabled="true"
         tools:ignore="MissingConstraints"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/green"/>
+        android:background="@drawable/bg_bottom_nav_gradient"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
