@@ -17,6 +17,12 @@ class PlantViewModel : ViewModel() {
     private val _plantList = MutableLiveData<List<Plant>>()
     val plantList: LiveData<List<Plant>> get() = _plantList
 
+    private val _totalPoints = MutableLiveData<Int>()
+    val totalPoints: LiveData<Int> get() = _totalPoints
+
+    private val _level = MutableLiveData<Int>()
+    val level: LiveData<Int> get() = _level
+
     fun fetchPlants(userId: String) {
         plantRepo.getPlantsByUser(userId) { list, _ ->
             list?.let { _plantList.value = it }
@@ -100,4 +106,28 @@ class PlantViewModel : ViewModel() {
             onResult(false, "Tanaman sudah dipupuk hari ini.")
         }
     }
+
+    fun loadUserLevel(userId: String) {
+        plantRepo.getUserPlants(userId) { plants ->
+            val total = plants.sumOf { it.points }
+            _totalPoints.value = total
+
+            val calculatedLevel = when {
+                total >= 1000 -> 10
+                total >= 900 -> 9
+                total >= 800 -> 8
+                total >= 700 -> 7
+                total >= 600 -> 6
+                total >= 500 -> 5
+                total >= 400 -> 4
+                total >= 300 -> 3
+                total >= 200 -> 2
+                total >= 100 -> 1
+                else -> 0
+            }
+
+            _level.value = calculatedLevel
+        }
+    }
+
 }

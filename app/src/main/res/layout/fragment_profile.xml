@@ -19,14 +19,37 @@
         android:src="@drawable/mascot" />
 
     <TextView
+        android:id="@+id/tvLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level: -"
+        android:textColor="@color/brown"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginTop="4dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
         android:id="@+id/tvPoints"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Poin: 0"
         android:textColor="@color/brown"
-        android:textSize="20dp"
+        android:textSize="16dp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints" />
+
+    <ProgressBar
+        android:id="@+id/progressBarLevel"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:progress="0"
+        android:max="100"
+        android:progressDrawable="@drawable/progress_level" />
 
     <LinearLayout
         android:layout_width="match_parent"

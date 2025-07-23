@@ -221,13 +221,48 @@ class HomeFragment : Fragment() {
 
         userDoc.get()
             .addOnSuccessListener { snapshot ->
-                val points = snapshot.getLong("points") ?: 0
-                binding.tvPoints.text = "Poin: $points"
+                val points = snapshot.getLong("points")?.toInt() ?: 0
+                val level = getLevelFromPoints(points)
+                val label = getLevelLabel(level)
+
+                // Ganti ke tvLevelGreeting
+                binding.tvLevelGreeting.text = "Level $level - $label ($points poin)"
             }
             .addOnFailureListener {
-                binding.tvPoints.text = "Poin: -"
+                binding.tvLevelGreeting.text = "Level: -"
             }
     }
+
+    private fun getLevelFromPoints(points: Int): Int {
+        return when {
+            points >= 1000 -> 10
+            points >= 900 -> 9
+            points >= 800 -> 8
+            points >= 700 -> 7
+            points >= 600 -> 6
+            points >= 500 -> 5
+            points >= 400 -> 4
+            points >= 300 -> 3
+            points >= 200 -> 2
+            else -> 1
+        }
+    }
+
+    private fun getLevelLabel(level: Int): String {
+        return when (level) {
+            10 -> "Legendary Botanist ⭐"
+            9 -> "Botanical Legend 🌳"
+            8 -> "Garden Master 👑"
+            7 -> "Eco Enthusiast 🌍"
+            6 -> "Fertile Farmer 🚜"
+            5 -> "Plant Parent 🌿"
+            4 -> "Budding Expert 🌼"
+            3 -> "Green Thumb 🍀"
+            2 -> "Seed Starter 🌾"
+            else -> "Newbie Gardener 🌱"
+        }
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

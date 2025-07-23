@@ -25,6 +25,17 @@ class PlantRepository {
             .addOnFailureListener { onResult(null, it.message) }
     }
 
+    fun getUserPlants(userId: String, onResult: (List<Plant>) -> Unit) {
+        plantRef.whereEqualTo("userId", userId).get()
+            .addOnSuccessListener { result ->
+                val plants = result.map { it.toObject(Plant::class.java) }
+                onResult(plants)
+            }
+            .addOnFailureListener {
+                onResult(emptyList())
+            }
+    }
+
     fun updatePlant(plantId: String, updatedData: Map<String, Any>, onResult: (Boolean, String?) -> Unit) {
         plantRef.document(plantId).update(updatedData)
             .addOnSuccessListener { onResult(true, null) }

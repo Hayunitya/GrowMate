@@ -198,14 +198,72 @@ class ProfileFragment : Fragment() {
 
     private fun loadUserPoints() {
         val user = auth.currentUser ?: return
-        firestore.collection("users").document(user.uid).get()
+        val userRef = firestore.collection("users").document(user.uid)
+
+        userRef.get()
             .addOnSuccessListener { snapshot ->
-                val points = snapshot.getLong("points") ?: 0
+                val points = snapshot.getLong("points")?.toInt() ?: 0
+                val level = getLevelFromPoints(points)
+                val label = levelLabel(level)
+                val fullLabel = if (level == 10) "Level 10 (Legendary Botanist ⭐)" else "Level $level ($label)"
+
+                // tampilkan di UI
                 binding.tvPoints.text = "Poin: $points"
+                binding.tvLevel.text = fullLabel
+
+                // Update progress bar
+                val progress = getProgressToNextLevel(points)
+                binding.progressBarLevel.progress = progress
+
+                // simpan ke Firestore juga
+                userRef.update("level", fullLabel)
             }
             .addOnFailureListener {
                 binding.tvPoints.text = "Poin: -"
+                binding.tvLevel.text = "Level: -"
+                binding.progressBarLevel.progress = 0
             }
+    }
+
+    private fun getLevelFromPoints(points: Int): Int {
+        return when {
+            points >= 1000 -> 10
+            points >= 900 -> 9
+            points >= 800 -> 8
+            points >= 700 -> 7
+            points >= 600 -> 6
+            points >= 500 -> 5
+            points >= 400 -> 4
+            points >= 300 -> 3
+            points >= 200 -> 2
+            else -> 1
+        }
+    }
+
+    private fun levelLabel(level: Int): String {
+        return when (level) {
+            10 -> "Legendary Botanist ⭐"
+            9 -> "Botanical Legend 🌳"
+            8 -> "Garden Master 👑"
+            7 -> "Eco Enthusiast 🌍"
+            6 -> "Fertile Farmer 🚜"
+            5 -> "Plant Parent 🌿"
+            4 -> "Budding Expert 🌼"
+            3 -> "Green Thumb 🍀"
+            2 -> "Seed Starter 🌾"
+            else -> "Newbie Gardener 🌱"
+        }
+    }
+
+    private fun getProgressToNextLevel(points: Int): Int {
+        val thresholds = listOf(0, 200, 300, 400, 500, 600, 700, 800, 900, 1000, Int.MAX_VALUE)
+
+        val level = getLevelFromPoints(points)
+        val currentThreshold = thresholds[level - 1]
+        val nextThreshold = thresholds[level]
+
+        val progress = ((points - currentThreshold) * 100) / (nextThreshold - currentThreshold)
+        return progress.coerceIn(0, 100)
     }
 
     private fun exitEditMode() {

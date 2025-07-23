@@ -33,16 +33,15 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/tvPoints"
+                android:id="@+id/tvLevelGreeting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Poin: 0"
-                android:textColor="@color/brown"
-                android:textSize="12dp"
+                android:text="Level kamu akan muncul di sini"
+                android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintRight_toLeftOf="@id/ivProfile"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints" />
+                android:textColor="@color/brown"
+                app:layout_constraintTop_toBottomOf="@id/tvGreeting"
+                app:layout_constraintStart_toStartOf="@id/tvGreeting" />
 
         </LinearLayout>
 
